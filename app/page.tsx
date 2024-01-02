@@ -39,7 +39,7 @@ export default function Home() {
   useEffect(() => {
     console.log(fuel, year, limit, manufacturer, model)
     getCars();
-  }, [fuel, year, limit, manufacturer, model]);
+  }, [fuel, year, limit, manufacturer, model, getCars]);
 
   // const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
   return (
@@ -64,8 +64,8 @@ export default function Home() {
         {allCars.length > 0 ? (
           <section>
             <div className="home__cars-wrapper">
-              {allCars?.map((car) => (
-                <CarCard car={car} />
+              {allCars?.map((car, idx) => (
+                <CarCard car={car} key={idx}/>
               ))}
             </div>
             {loading && <div className="mt-16 w-full flex-center">
